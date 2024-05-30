@@ -21,7 +21,7 @@ for csv in csv_files:
     except UnicodeDecodeError:
         try:
             # If UTF-8 fails, try reading the file using UTF-16 encoding with tab separator
-            df = pd.read_csv(file_path, sep='\t', encoding='utf-16')
+            df = pd.read_csv(file_path, encoding='cp1252')
             df_list.append(df)
         except Exception as e:
             print(f"Could not read file {csv} because of error: {e}")
@@ -32,4 +32,4 @@ for csv in csv_files:
 big_df = pd.concat(df_list, ignore_index=True)
 
 # Save the final result to a new CSV file
-big_df.to_csv(os.path.join(folder_path, 'combined_file.csv'), index=False)
+big_df.to_csv(os.path.join(folder_path, 'all_data.csv'), index=False)
