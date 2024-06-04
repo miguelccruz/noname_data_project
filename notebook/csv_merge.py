@@ -20,7 +20,7 @@ for csv in csv_files:
         df_list.append(df)
     except UnicodeDecodeError:
         try:
-            # If UTF-8 fails, try reading the file using UTF-16 encoding with tab separator
+            # If UTF-8 fails, try reading the file using cp1252 encoding 
             df = pd.read_csv(file_path, encoding='cp1252')
             df_list.append(df)
         except Exception as e:
